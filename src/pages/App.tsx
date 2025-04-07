@@ -2,7 +2,6 @@ import { FC, useEffect, useState } from 'react';
 
 import StickyHeader from '../components/StickyHeader';
 import UserSelector from '../components/UserSelector';
-import BookStore from '../stores/BookStore';
 import BookShelf from './BookShelf';
 import './styles.scss';
 
@@ -24,7 +23,7 @@ const App: FC = () => {
   return (
     <div className="wrapper">
       <div className="container">
-        <h1>Welcome to BookStore sample</h1>
+        <h1>Welcome to BookStore sample.</h1>
 
         {!!debouncedUser && <StickyHeader />}
         <UserSelector user={user} setUser={setUser} />
