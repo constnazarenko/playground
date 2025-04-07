@@ -10,7 +10,7 @@ const root = createRoot(domNode);
 
 function onRender(id, phase, actualDuration, baseDuration, startTime, commitTime) {
   // Aggregate or log render timings...
-  console.log(id, phase, actualDuration, baseDuration, startTime, commitTime);
+  console.debug(id, phase, actualDuration, baseDuration, startTime, commitTime);
 }
 
 root.render(
