@@ -1,0 +1,35 @@
+{
+  "extends": ["stylelint-config-standard-scss", "stylelint-config-prettier-scss"],
+  "plugins": [
+    "stylelint-scss"
+  ],
+  "rules": {
+    "at-rule-no-unknown": null,
+    "scss/at-rule-no-unknown": [
+      true,
+      {
+        "ignoreAtRules": [
+          "include",
+          "mixin",
+          "extends",
+          "apply",
+          "tailwind",
+          "components",
+          "utilities",
+          "screen"
+        ]
+      }
+    ],
+    "scss/dollar-variable-pattern": "^foo",
+    "scss/selector-no-redundant-nesting-selector": true,
+    "property-no-vendor-prefix": null,
+    "max-nesting-depth": 10,
+    "selector-max-compound-selectors": 10,
+    "selector-max-id": 2,
+    "selector-class-pattern": ["^[a-zA-Z0-9\\-_]+$",
+      {
+        "message":
+        "Selector should be written in lowercase with hyphens or underscore (selector-class-pattern)"
+      }]
+  }
+}

@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:300,700');
+@import url('https://fonts.googleapis.com/css?family=Titillium+Web:100,300,400,500,700');
+@import url('https://fonts.googleapis.com/css?family=Exo+2:100,300,400,500,700');
+
+:root {
+  --bg-white: #ffffff;
+  --bg-blue: #425370;
+  --text-white: #fffafa;
+  --text-gray: #999;
+  --text-darkblue: #425370;
+  --text-darkgray: #555;
+  --text-active: #ffd700;
+  --delimiter-gray: #dedede;
+}
+
+body {
+  background-color: var(--bg-white);
+  font-size: 16px;
+  padding: 0;
+  min-width: 750px;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 100;
+  }
+}

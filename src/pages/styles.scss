@@ -1,0 +1,47 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  font-family: 'Titillium Web', 'Roboto', sans-serif;
+
+  .container {
+    background-color: var(--bg-blue);
+    color: var(--text-white);
+
+    border-radius: 10px;
+
+    min-width: 480px;
+    max-width: 1024px;
+    width: 100%;
+
+    padding: 10px 20px;
+
+    .tabs {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      width: 300px;
+
+      .tab {
+        padding: 10px 20px;
+        cursor: pointer;
+        font-size: 18px;
+        font-weight: 500;
+        color: var(--text-white);
+        text-align: center;
+        border: 1px solid var(--text-white);
+        border-radius: 5px;
+
+        &:hover {
+          border-radius: 15px;
+        }
+
+        &.active {
+          border: 1px solid var(--text-active);
+          border-radius: 5px;
+        }
+      }
+
+    }
+
+  }
+}
