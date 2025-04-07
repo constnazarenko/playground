@@ -1,7 +1,8 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
-import Book from './Book';
+
 import { BookModel } from '../models/Book';
+import Book from './Book';
 
 describe('Book Component', () => {
   const mockBook: BookModel = {

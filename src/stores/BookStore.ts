@@ -20,7 +20,7 @@ export class BootStore {
     const _isPrivate = isPrivate === undefined ? this.isPrivate : isPrivate;
     try {
       const data: BookModel[] = await this.apiGateway.get(_isPrivate ? `${userId}/private` : userId);
-      const amountOfPrivateBooks = _isPrivate ? data.length : data.filter((book) => book.ownerId === userId).length
+      const amountOfPrivateBooks = _isPrivate ? data.length : data.filter((book) => book.ownerId === userId).length;
       runInAction(() => {
         this.amountOfPrivateBooks = amountOfPrivateBooks;
         this.books = data;
@@ -33,10 +33,9 @@ export class BootStore {
         this.loading = false;
       });
     }
-  }
+  };
 
   addBook = async (userId: string, name: string, author: string) => {
-
     const data = {
       id: Math.round(Math.random() * 1000000),
       name,
@@ -55,7 +54,7 @@ export class BootStore {
         this.loading = false;
       });
     }
-  }
+  };
 
   reset = async (userId: string) => {
     this.loading = true;
@@ -69,7 +68,7 @@ export class BootStore {
         this.loading = false;
       });
     }
-  }
+  };
 }
 
 const bootStore = new BootStore();

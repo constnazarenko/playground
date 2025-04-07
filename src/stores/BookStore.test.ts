@@ -1,5 +1,5 @@
-import { BootStore } from './BookStore';
 import ApiGateway from '../services/ApiGateway';
+import { BootStore } from './BookStore';
 
 // Mock the ApiGateway
 jest.mock('../services/ApiGateway');
@@ -10,7 +10,7 @@ describe('BookStore', () => {
 
   const mockBooks = [
     { id: 1, name: 'The Moomins and the Great Flood', author: 'T. Jansson', ownerId: 'const' },
-    { id: 2, name: 'When We Were Very Young', author: '	A. A. Milne', ownerId: 'const' }
+    { id: 2, name: 'When We Were Very Young', author: '	A. A. Milne', ownerId: 'const' },
   ];
 
   beforeEach(() => {
