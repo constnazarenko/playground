@@ -3,6 +3,8 @@ import { FC, useEffect, useState } from 'react';
 import './styles.scss';
 import UserSelector from '../components/UserSelector';
 import BookShelf from './BookShelf';
+import BookStore from '../stores/BookStore';
+import StickyHeader from '../components/StickyHeader';
 
 const App: FC = () => {
   const [user, setUser] = useState<string | null>(null);
@@ -24,6 +26,7 @@ const App: FC = () => {
       <div className="container">
         <h1>Welcome to BookStore sample</h1>
 
+        {!!debouncedUser && (<StickyHeader />)}
         <UserSelector user={user} setUser={setUser} />
 
         {!debouncedUser && <p style={{color: 'coral'}}>Please enter your name</p>}

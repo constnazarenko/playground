@@ -7,6 +7,7 @@ export class BootStore {
   books: BookModel[] = [];
   loading = false;
   isPrivate = false;
+  amountOfPrivateBooks = 0;
   private apiGateway: ApiGateway;
 
   constructor() {
@@ -16,15 +17,19 @@ export class BootStore {
 
   getBooks = async (userId: string, isPrivate: boolean = undefined) => {
     this.loading = true;
-    this.isPrivate = isPrivate === undefined ? this.isPrivate : isPrivate;
+    const _isPrivate = isPrivate === undefined ? this.isPrivate : isPrivate;
     try {
-      const data: BookModel[] = await this.apiGateway.get(this.isPrivate ? `${userId}/private` : userId);
+      const data: BookModel[] = await this.apiGateway.get(_isPrivate ? `${userId}/private` : userId);
+      const amountOfPrivateBooks = _isPrivate ? data.length : data.filter((book) => book.ownerId === userId).length
       runInAction(() => {
+        this.amountOfPrivateBooks = amountOfPrivateBooks;
         this.books = data;
         this.loading = false;
+        this.isPrivate = _isPrivate;
       });
     } catch (error) {
       runInAction(() => {
+        this.amountOfPrivateBooks = 0;
         this.loading = false;
       });
     }
