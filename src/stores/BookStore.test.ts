@@ -30,7 +30,7 @@ describe('BookStore', () => {
     it('should load public books successfully', async () => {
       mockApiGateway.get.mockResolvedValueOnce(mockBooks);
 
-      await store.loadBooks('const');
+      await store.getBooks('const');
 
       expect(mockApiGateway.get).toHaveBeenCalledWith('const');
       expect(store.books).toEqual(mockBooks);
@@ -40,7 +40,7 @@ describe('BookStore', () => {
     it('should load private books successfully', async () => {
       mockApiGateway.get.mockResolvedValueOnce(mockBooks);
 
-      await store.loadBooks('const', true);
+      await store.getBooks('const', true);
 
       expect(mockApiGateway.get).toHaveBeenCalledWith('const/private');
       expect(store.books).toEqual(mockBooks);
@@ -50,7 +50,7 @@ describe('BookStore', () => {
     it('should handle loading error', async () => {
       mockApiGateway.get.mockRejectedValueOnce(new Error('Network error'));
 
-      await store.loadBooks('const');
+      await store.getBooks('const');
 
       expect(store.loading).toBe(false);
       expect(store.books).toEqual([]);

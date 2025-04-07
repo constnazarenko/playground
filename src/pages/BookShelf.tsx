@@ -19,7 +19,7 @@ const BookShelf: FC<BookShelfProps> = ({ user }) => {
   const [isPrivate, setIsPrivate] = useState(BookStore.isPrivate);
 
   useEffect(() => {
-    BookStore.loadBooks(user, isPrivate);
+    BookStore.getBooks(user, isPrivate);
   }, [user, isPrivate]);
 
   return (
