@@ -1,7 +1,7 @@
 import pluginJs from '@eslint/js';
 import eslintConfigPrettier from 'eslint-config-prettier';
-import pluginJest from 'eslint-plugin-jest';
 import pluginReact from 'eslint-plugin-react';
+import pluginJest from 'eslint-plugin-jest';
 import globals from 'globals';
 import tseslint from 'typescript-eslint';
 
@@ -9,12 +9,12 @@ export default [
   pluginJs.configs.recommended,
   ...tseslint.configs.recommended,
   pluginReact.configs.flat.recommended,
-  eslintConfigPrettier,
   { ignores: ['dist', 'webpack*', 'src/assets'] },
+  eslintConfigPrettier,
   {
     files: ['**/*.{js,jsx}', '**/*.{ts,tsx}', '**/*.{mjs,cjs}'],
     languageOptions: {
-      globals: globals.browser,
+      globals: globals.node,
       parserOptions: {
         ecmaFeatures: {
           jsx: true,

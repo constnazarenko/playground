@@ -5,7 +5,7 @@ import { BookModel } from '../models/Book';
 const Book: FC<BookModel> = ({ name, author, id, ownerId }) => {
   return (
     <div style={{ paddingBottom: '1rem' }}>
-      <h4>
+      <h4 style={{ marginBottom: 0 }}>
         {name} [{id}]
       </h4>
       <div>Author: {author}</div>

@@ -1,13 +1,19 @@
-import { FC } from 'react';
+import { FC, useEffect, useState } from 'react';
 
-interface UserSelectorProps {
-  user: string | null;
-  setUser: (user: string | null) => void;
-}
+import userStore from '../stores/UserStore';
 
-const UserSelector: FC<UserSelectorProps> = ({ user, setUser }) => {
+const UserSelector: FC = () => {
+  const [userId, setUserId] = useState(userStore.userId);
+
+  useEffect(() => {
+    const delayInputTimeoutId = setTimeout(() => {
+      userStore.setUser(userId);
+    }, 1000);
+    return () => clearTimeout(delayInputTimeoutId);
+  }, [userId]);
+
   return (
-    <input type="text" placeholder="Enter your name" value={user || ''} onChange={(e) => setUser(e.target.value)} />
+    <input type="text" placeholder="Enter your name" value={userId || ''} onChange={(e) => setUserId(e.target.value)} />
   );
 };
 

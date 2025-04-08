@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react';
+import { FC, useEffect } from 'react';
 
 import StickyHeader from '../components/StickyHeader';
 import UserSelector from '../components/UserSelector';
@@ -6,16 +6,6 @@ import BookShelf from './BookShelf';
 import './styles.scss';
 
 const App: FC = () => {
-  const [user, setUser] = useState<string | null>(null);
-  const [debouncedUser, setDebouncedUser] = useState<string | null>(null);
-
-  useEffect(() => {
-    const delayInputTimeoutId = setTimeout(() => {
-      setDebouncedUser(user);
-    }, 500);
-    return () => clearTimeout(delayInputTimeoutId);
-  }, [user]);
-
   useEffect(() => {
     document.title = `BookStore sample`;
   }, []);
@@ -23,14 +13,11 @@ const App: FC = () => {
   return (
     <div className="wrapper">
       <div className="container">
-        <h1>Welcome to BookStore sample.</h1>
+        <h1>Welcome to BookStore sample</h1>
 
-        {!!debouncedUser && <StickyHeader />}
-        <UserSelector user={user} setUser={setUser} />
-
-        {!debouncedUser && <p style={{ color: 'coral' }}>Please enter your name</p>}
-
-        {debouncedUser && <BookShelf user={debouncedUser} />}
+        <StickyHeader />
+        <UserSelector />
+        <BookShelf />
       </div>
     </div>
   );

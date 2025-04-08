@@ -3,7 +3,7 @@ import { makeAutoObservable, runInAction } from 'mobx';
 import { BookModel } from '../models/Book';
 import ApiGateway from '../services/ApiGateway';
 
-export class BootStore {
+class BookStore {
   books: BookModel[] = [];
   loading = false;
   isPrivate = false;
@@ -27,7 +27,7 @@ export class BootStore {
         this.loading = false;
         this.isPrivate = _isPrivate;
       });
-    } catch (error) {
+    } catch {
       runInAction(() => {
         this.amountOfPrivateBooks = 0;
         this.loading = false;
@@ -49,7 +49,7 @@ export class BootStore {
       //refresh the book list after adding a book
       // possibly the data could be pushed to the this.books directly if no BE validation/processing is needed
       await this.getBooks(userId);
-    } catch (error) {
+    } catch {
       runInAction(() => {
         this.loading = false;
       });
@@ -63,7 +63,7 @@ export class BootStore {
       //refresh the book list after reset
       // possibly the data could be pushed to the this.books directly if no BE validation/processing is needed
       await this.getBooks(userId);
-    } catch (error) {
+    } catch {
       runInAction(() => {
         this.loading = false;
       });
@@ -71,5 +71,6 @@ export class BootStore {
   };
 }
 
-const bootStore = new BootStore();
-export default bootStore;
+const bookStore = new BookStore();
+export default bookStore;
+export { BookStore };

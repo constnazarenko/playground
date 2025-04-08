@@ -1,11 +1,11 @@
 import ApiGateway from '../services/ApiGateway';
-import { BootStore } from './BookStore';
+import { BookStore } from './BookStore';
 
 // Mock the ApiGateway
 jest.mock('../services/ApiGateway');
 
 describe('BookStore', () => {
-  let store: BootStore;
+  let store: BookStore;
   let mockApiGateway: jest.Mocked<ApiGateway>;
 
   const mockBooks = [
@@ -16,13 +16,16 @@ describe('BookStore', () => {
   beforeEach(() => {
     // Clear all mocks before each test
     jest.clearAllMocks();
-    store = new BootStore();
+    store = new BookStore();
     mockApiGateway = new ApiGateway() as jest.Mocked<ApiGateway>;
     mockApiGateway = {
       get: jest.fn(),
       post: jest.fn(),
       put: jest.fn(),
     };
+
+    // resetting private attribute of the class for testing purposes.
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (store as any).apiGateway = mockApiGateway;
   });
 
