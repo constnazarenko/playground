@@ -32,10 +32,10 @@ const BookShelf: FC = () => {
       <h2>User: {UserStore.userId}</h2>
 
       <div className="tabs">
-        <div className={classNames({ tab: true, active: !BookStore.isPrivate })} onClick={() => setIsPrivate(false)}>
+        <div className={classNames({ tab: true, active: !isPrivate })} onClick={() => setIsPrivate(false)}>
           All books
         </div>
-        <div className={classNames({ tab: true, active: BookStore.isPrivate })} onClick={() => setIsPrivate(true)}>
+        <div className={classNames({ tab: true, active: isPrivate })} onClick={() => setIsPrivate(true)}>
           Private books
         </div>
       </div>
